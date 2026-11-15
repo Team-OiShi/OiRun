@@ -1,0 +1,32 @@
+{
+  "packageName": "io.github.team_oishi.oirun",
+  "appDescription": "An app that records running courses while driving and keeps notes about the road on the course map.",
+  "invokeWord": "오이런",
+  "version": "0.1.0",
+  "actionCalls": [
+    {
+      "type": "function",
+      "function": {
+        "name": "ADD_COURSE_MEMO",
+        "description": "Adds a note about the road the user is driving on to the running course being recorded, at the place where the user started speaking.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "memo": {
+              "type": "string",
+              "description": "The note to keep, as the user said it."
+            },
+            "title": {
+              "type": "string",
+              "description": "A label of a few words that sums up the note, shown on the course map."
+            }
+          },
+          "required": [
+            "memo"
+          ]
+        },
+        "component": "service"
+      }
+    }
+  ]
+}
