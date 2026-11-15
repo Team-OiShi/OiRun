@@ -46,7 +46,7 @@ Pleos Fused Location으로 위치와 고도를, 차량 주행거리로 거리를
 
 ## 실행 방법
 
-- **APK로 설치**: [최신 릴리스](https://github.com/Team-OiShi/OiRun/releases/latest)에서 `OiShi_OiRun_release.apk`를 받아 `adb install OiShi_OiRun_release.apk`로 설치합니다. 직접 빌드한 디버그 앱이 설치되어 있으면 서명이 달라 먼저 지워야 합니다.
+- **APK로 설치**: 서명된 release APK [`apk/OiShi_OiRun_release.apk`](apk/OiShi_OiRun_release.apk)를 `adb install apk/OiShi_OiRun_release.apk`로 설치합니다. 같은 파일이 [릴리스 v0.1.0-2](https://github.com/Team-OiShi/OiRun/releases/tag/v0.1.0-2)에도 있습니다. 직접 빌드한 디버그 앱이 설치되어 있으면 서명이 달라 먼저 지워야 합니다.
 - **소스에서 빌드**: JDK 21(Android Studio 번들 JBR 21)과 Android SDK 35로 빌드합니다.
 
   ```sh
