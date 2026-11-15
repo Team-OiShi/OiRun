@@ -52,6 +52,7 @@ jobs:
         run: |
           version=$(grep -oP 'versionName = "\K[^"]+' app/build.gradle.kts)
           tag="v$version-$GITHUB_RUN_NUMBER"
-          apk="OiRun-$version-$GITHUB_RUN_NUMBER.apk"
+          # The contest asks for <team>_<app>_release.apk; the tag tells the versions apart.
+          apk="OiShi_OiRun_release.apk"
           cp app/build/outputs/apk/release/app-release.apk "$apk"
           gh release create "$tag" "$apk" --target "$GITHUB_SHA" --title "OiRun $version ($GITHUB_RUN_NUMBER)" --generate-notes

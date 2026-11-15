@@ -42,8 +42,42 @@ Pleos Fused Location으로 위치와 고도를, 차량 주행거리로 거리를
 
 ![코스 저장 알림](docs/notification.png)
 
-Pleos Connect Emulator v2.1.0에서 Android Studio(JDK 21)로 빌드·실행합니다.
+미리 생성한 3km·5km·10km·하프(21.0975km)·풀(42.195km) GPX를 각각 5개씩, 총 25개 앱에 포함합니다. 앱 실행 시 경로를 계산하지 않고 **저장된 코스** 폴더로 복사합니다. 여의도·반포·뚝섬 한강공원, 탄천, 중랑천의 OpenStreetMap 보행 경로를 사용하며 실제 대회 공인 코스는 아닙니다. 이전 근사 좌표 샘플은 수정되지 않은 파일만 자동 보정하고, 사용자 기록·수정·삭제는 보존합니다.
 
-미리 생성한 3km·5km·10km·하프(21.0975km)·풀(42.195km) GPX를 각각 5개씩, 총 25개 앱에 포함합니다. 앱 실행 시 경로를 계산하지 않고 **저장된 코스** 폴더로 복사합니다. 여의도·반포·뚝섬 한강공원, 탄천, 중랑천의 OpenStreetMap 보행 경로를 사용하며 실제 대회 공인 코스는 아닙니다. 이전 근사 좌표 샘플은 수정되지 않은 파일만 자동 보정하고, 사용자 기록·수정·삭제는 보존합니다. 보행 경로는 [FOSSGIS OSRM](https://routing.openstreetmap.de/about.html)으로 계산했고, 경로와 고도의 출처는 `app/src/main/resources/sample-courses/NOTICE.txt`에 있습니다.
+## 실행 방법
 
-샘플 경로 좌표: [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0. 샘플 경로 고도: [Terrain Tiles](https://registry.opendata.aws/terrain-tiles/) (Mapzen, AWS Open Data; 한국 지역은 SRTM).
+- **APK로 설치**: [최신 릴리스](https://github.com/Team-OiShi/OiRun/releases/latest)에서 `OiShi_OiRun_release.apk`를 받아 `adb install OiShi_OiRun_release.apk`로 설치합니다. 직접 빌드한 디버그 앱이 설치되어 있으면 서명이 달라 먼저 지워야 합니다.
+- **소스에서 빌드**: JDK 21(Android Studio 번들 JBR 21)과 Android SDK 35로 빌드합니다.
+
+  ```sh
+  ./gradlew testDebugUnitTest assembleDebug
+  adb install -r app/build/outputs/apk/debug/app-debug.apk
+  ```
+
+- 처음 열 때 위치(Pleos Fused Location)와 알림 권한을 허용합니다. P에서 코스 목록을 바로 띄우려면 설정에서 '다른 앱 위에 표시'도 허용합니다. 그 뒤로는 앱을 열지 않아도 기어를 P에서 빼면 주행을 기록합니다.
+
+## 테스트 환경
+
+| 항목 | 내용 |
+| --- | --- |
+| 에뮬레이터 | Pleos Connect Emulator v2.1.0 (Android 14, API 34) |
+| 화면 | 2560×1440, 160 dpi. Pleos의 가로·세로 앱 창을 모두 지원 |
+| 빌드 | Android Studio, JDK 21, compileSdk·targetSdk 35, minSdk 28 |
+| Pleos SDK | Vehicle 2.3.2, FusedLocation 1.1.3 |
+
+## 오픈소스 라이선스
+
+| 구성 요소 | 라이선스 |
+| --- | --- |
+| [MapLibre Native for Android](https://github.com/maplibre/maplibre-native) 13.7.1 | BSD-2-Clause |
+| AndroidX(Core, Lifecycle, Activity), Jetpack Compose, Material 3 | Apache License 2.0 |
+| Kotlin, kotlinx.coroutines | Apache License 2.0 |
+| JUnit 4(단위 테스트에만 사용) | Eclipse Public License 1.0 |
+
+| 데이터 | 출처 |
+| --- | --- |
+| 지도 타일 | [OpenFreeMap](https://openfreemap.org/) © [OpenMapTiles](https://openmaptiles.org/), 데이터 [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright)(ODbL 1.0) |
+| 샘플 경로 좌표 | [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0. 보행 경로는 [FOSSGIS OSRM](https://routing.openstreetmap.de/about.html)으로 계산 |
+| 샘플 경로 고도 | [Terrain Tiles](https://registry.opendata.aws/terrain-tiles/)(Mapzen, AWS Open Data; 한국 지역은 SRTM). [출처 표기](https://github.com/tilezen/joerd/blob/master/docs/attribution.md)를 따름 |
+
+Pleos Vehicle·FusedLocation SDK는 Pleos Playground에서 제공하는 SDK이며 오픈소스가 아닙니다. 샘플 GPX의 출처는 `app/src/main/resources/sample-courses/NOTICE.txt`에도 적혀 있습니다.
