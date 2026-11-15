@@ -67,6 +67,12 @@
 
 미리 생성한 3km·5km·10km·하프(21.0975km)·풀(42.195km) GPX를 각각 5개씩, 총 25개 앱에 포함합니다. 앱 실행 시 경로를 계산하지 않고 **저장된 코스** 폴더로 복사합니다. 여의도·반포·뚝섬 한강공원, 탄천, 중랑천의 OpenStreetMap 보행 경로를 사용하며 실제 대회 공인 코스는 아닙니다. 이전 근사 좌표 샘플은 수정되지 않은 파일만 자동 보정하고, 사용자 기록·수정·삭제는 보존합니다.
 
+## 시연 영상
+
+[![오이런 소개 영상](https://img.youtube.com/vi/FChYvilg-LU/maxresdefault.jpg)](https://youtu.be/FChYvilg-LU)
+
+[YouTube에서 보기](https://youtu.be/FChYvilg-LU)
+
 ## 시연 화면
 
 <table>
